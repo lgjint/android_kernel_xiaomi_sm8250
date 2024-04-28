@@ -51,6 +51,8 @@ endif
 
 ifeq ($(cc-name),clang)
 KBUILD_CFLAGS	+= -mno-implicit-float
+KBUILD_CFLAGS   += -mcpu=cortex-a55
+KBUILD_AFLAGS   += -mcpu=cortex-a55
 else
 KBUILD_CFLAGS	+= -mgeneral-regs-only
 endif
@@ -85,6 +87,7 @@ endif
 
 ifeq ($(CONFIG_LD_IS_LLD), y)
 KBUILD_LDFLAGS	+= -z norelro
+KBUILD_LDFLAGS  += -mllvm -mcpu=cortex-a55
 endif
 
 CHECKFLAGS	+= -D__aarch64__
